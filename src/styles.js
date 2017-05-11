@@ -6,12 +6,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent'
   },
   parallaxHeaderContainer: {
+    zIndex: 99,
     backgroundColor: 'transparent',
-    overflow: 'hidden'
   },
   parallaxHeader: {
     backgroundColor: 'transparent',
-    overflow: 'hidden'
   },
   backgroundImage: {
     position: 'absolute',
