@@ -257,7 +257,7 @@ class ParallaxScrollView extends Component {
                 const { nativeEvent: { layout: { height } } } = e;
                 const footerHeight = Math.max(0, viewHeight - height - stickyHeaderHeight);
                 if (this._footerHeight !== footerHeight) {
-                  this._footerComponent.setNativeProps({ style: { height: footerHeight }});
+                  this._footerComponent.setNativeProps({ style: { height: 200 }});
                   this._footerHeight = footerHeight;
                 }
               }}>
