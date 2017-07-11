@@ -257,6 +257,7 @@ class ParallaxScrollView extends Component {
                 const { nativeEvent: { layout: { height } } } = e;
                 console.log('HEIGHTS', viewHeight, height, stickyHeaderHeight)
                 const footerHeight = height < viewHeight ? height : Math.max(0, viewHeight - height - stickyHeaderHeight);
+                console.log('FOOTER HEIGHT', footerHeight)
                 if (this._footerHeight !== footerHeight) {
                   this._footerComponent.setNativeProps({ style: { height: 200 }});
                   this._footerHeight = footerHeight;
@@ -269,7 +270,7 @@ class ParallaxScrollView extends Component {
 
   _renderFooterSpacer({ contentBackgroundColor }) {
     return (
-      <View ref={ref => this._footerComponent = ref } style={{ backgroundColor: contentBackgroundColor }}/>
+      <View ref={ref => this._footerComponent = ref } style={{ backgroundColor: contentBackgroundColor, height: 0 }}/>
     );
   }
 
