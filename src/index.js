@@ -104,8 +104,18 @@ class ParallaxScrollView extends Component {
               scrollEventThrottle: 16,
               onScroll: this._onScroll.bind(this),
             },
-            foreground,
             bodyComponent,
+            //footerSpacer
+          )
+        }
+        {
+          React.cloneElement(scrollElement, {
+              ref: SCROLLVIEW_REF,
+              style: [styles.scrollView, scrollElement.props.style],
+              scrollEventThrottle: 16,
+              onScroll: this._onScroll.bind(this),
+            },
+            foreground,
             //footerSpacer
           )
         }
