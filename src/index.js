@@ -81,11 +81,12 @@ class ParallaxScrollView extends Component {
       stickyHeaderHeight,
       style,
       contentContainerStyle,
+      foregroundStyles,
       ...scrollViewProps
     } = this.props;
 
     const background = this._renderBackground({ fadeOutBackground, backgroundScrollSpeed, backgroundColor, parallaxHeaderHeight, stickyHeaderHeight, renderBackground });
-    const foreground = this._renderForeground({ fadeOutForeground, parallaxHeaderHeight, stickyHeaderHeight, renderForeground: renderForeground || renderParallaxHeader });
+    const foreground = this._renderForeground({ fadeOutForeground, parallaxHeaderHeight, stickyHeaderHeight, renderForeground: renderForeground || renderParallaxHeader, foregroundStyles });
     const bodyComponent = this._wrapChildren(children, { contentBackgroundColor, stickyHeaderHeight, contentContainerStyle });
     //const footerSpacer = this._renderFooterSpacer({ contentBackgroundColor });
     const maybeStickyHeader = this._maybeRenderStickyHeader({ parallaxHeaderHeight, stickyHeaderHeight, backgroundColor, renderFixedHeader, renderStickyHeader });
@@ -218,11 +219,11 @@ class ParallaxScrollView extends Component {
     );
   }
 
-  _renderForeground({ fadeOutForeground, parallaxHeaderHeight, stickyHeaderHeight, renderForeground }) {
+  _renderForeground({ fadeOutForeground, parallaxHeaderHeight, stickyHeaderHeight, renderForeground, foregroundStyles }) {
     const { scrollY } = this.state;
     const p = pivotPoint(parallaxHeaderHeight, stickyHeaderHeight);
     return (
-      <View style={styles.parallaxHeaderContainer}>
+      <View style={[styles.parallaxHeaderContainer, foregroundStyles]}>
         <Animated.View
           style={[styles.parallaxHeader, {
                   height: parallaxHeaderHeight,
